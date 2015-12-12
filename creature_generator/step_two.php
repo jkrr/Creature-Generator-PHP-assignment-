@@ -8,19 +8,17 @@
 </head>
 <body>
 <div id="holder">
-	
 <?php
-//Parse form 
 $name = $_POST["name"];
 $creature_type = $_POST["creature_type"];
 $creatureSuffix = "";
-//Name filter
+//Name filter & Story Generation
 if (isset($_POST["name"]) && !empty($_POST["name"]) && isset($_POST["creature_type"]) && $_POST["creature_type"] == "alien") {
 	$name = $_POST["name"];
     $creature_type = $_POST["creature_type"];
  	$creatureSuffix = "zilla";
     $name = ucwords(htmlspecialchars(strtolower(strip_tags($name))));
-    $creature_story =  "<p>Thanks " . $name . $creatureSuffix . ". Today is " . date("l F jS\, Y") . " and it’s been a busy day. But don’t worry! Our scientists have just finished the most awesome experiment humankind has ever witnessed! You've been transformed into an " . $creature_type . "!</p>";
+    $creature_story =  "<p>Thanks " . $name . $creatureSuffix . ". Today is " . date("l\, F jS\, Y") . " and it’s been a busy day. But don’t worry! Our scientists have just finished the most awesome experiment humankind has ever witnessed! You've been transformed into an " . $creature_type . "!</p>";
     echo $creature_story;
     //Mail
     $message = "<p>" . $name . $creatureSuffix . " has been generated!</p>";
@@ -30,7 +28,7 @@ if (isset($_POST["name"]) && !empty($_POST["name"]) && isset($_POST["creature_ty
     $creature_type = $_POST["creature_type"];
 	$name = ucwords(htmlspecialchars(strtolower(strip_tags($name))));
 	$creatureSuffix = "bot";
-	$creature_story =  "<p>Thanks " . $name . $creatureSuffix . ". Today is " . date("l F jS\, Y") . " and it’s been a busy day. But don’t worry! Our scientists have just finished the most awesome experiment humankind has ever witnessed! You've been transformed into a " . $creature_type . "!</p>";
+	$creature_story =  "<p>Thanks " . $name . $creatureSuffix . ". Today is " . date("l\, F jS\, Y") . " and it’s been a busy day. But don’t worry! Our scientists have just finished the most awesome experiment humankind has ever witnessed! You've been transformed into a " . $creature_type . "!</p>";
     echo $creature_story;
     //Mail
     $message = "<p>" . $name . $creatureSuffix . " has been generated!</p>";
@@ -38,10 +36,8 @@ if (isset($_POST["name"]) && !empty($_POST["name"]) && isset($_POST["creature_ty
 } else if (empty($_POST["name"]) || empty($_POST["creature_type"])) {
 	header("location: step_one.php");
 }
-
 ?> 
- <p>When you are ready to see the horrifying results, <button type="button" id="clickme">click here!</button></p>
-
+ <p>When you are ready to see the horrifying results, <button href="#" id="clickme">click here!</button></p>
 <div id="results">
 <?php  
 //Random Creature Image
@@ -60,9 +56,9 @@ $ifAlien = array("What Galaxy are you from?!", "I want to believe!", "E.T. go ho
 $ifRobot = array("Do the robot!", "How could you allow me to do this to you?", "Set phasers to stun!", "This is not the droid we were looking for!");
 $random_type = $ifAlien[mt_rand(0, 3)];
 	if (isset($_POST["creature_type"]) && $_POST["creature_type"] == "alien")  {
-		$random_type = $ifAlien[mt_rand (0, 3)];
+		$random_type = $ifAlien[mt_rand(0, 3)];
 	} else if ($_POST["creature_type"] == "robot") {
-		$random_type = $ifRobot[mt_rand (0, 3)];
+		$random_type = $ifRobot[mt_rand(0, 3)];
 	}
 	echo "<br>" . $random_type;
 ?>
@@ -72,14 +68,14 @@ $random_type = $ifAlien[mt_rand(0, 3)];
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="js/jquery.uniform.min.js"></script>
 <script>
-jQuery("select, input:checkbox, input:radio, input:file, input:text, input:submit, textarea").uniform();
 //slideDown
 $(document).ready(function(){
 		
 		$("#clickme").click(function() {
-        	$("#results").slideDown(500);
+        	$("#results").slideDown();
     		});
 
+jQuery("select, input:checkbox, input:radio, input:file, input:text, input:submit, textarea").uniform();
 });
 </script>
 </body>
