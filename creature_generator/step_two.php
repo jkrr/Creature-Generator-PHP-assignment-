@@ -75,8 +75,8 @@ $random_type = $ifAlien[mt_rand(0, 3)];
 jQuery("select, input:checkbox, input:radio, input:file, input:text, input:submit, textarea").uniform();
 //slideDown
 $(document).ready(function(){
-		$("#clickme").click(function(){
-        $("#results").hide().slideDown(500);
+		$("#clickme").click(function()
+        $("#results").slideDown(500);
     	});
 	});
 </script>
