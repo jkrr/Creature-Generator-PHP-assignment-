@@ -40,7 +40,7 @@ if (isset($_POST["name"]) && !empty($_POST["name"]) && isset($_POST["creature_ty
 }
 
 ?> 
- <p>When you are ready to see the horrifying results, <a href="#results" id="clickme">click here!</a></p>
+ <p>When you are ready to see the horrifying results, <button id="clickme">click here!</button></p>
 
 <div id="results">
 <?php  
@@ -68,8 +68,6 @@ $random_type = $ifAlien[mt_rand(0, 3)];
 ?>
 </div> <!-- /results -->
 
-<div id ="loadhere"></div>
-
 </div> <!-- /holder -->
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="js/jquery.uniform.min.js"></script>
@@ -77,8 +75,9 @@ $random_type = $ifAlien[mt_rand(0, 3)];
 jQuery("select, input:checkbox, input:radio, input:file, input:text, input:submit, textarea").uniform();
 //slideDown
 $(document).ready(function(){
-			
-
+		$("#clickme").click(function(){
+        $("#results").hide().slideDown(500);
+    	});
 	});
 </script>
 </body>
