@@ -31,7 +31,18 @@ fieldset p {
 	margin: 0;
 }
 
+#showresults {
+	text-align: center;
+	font-size: 1.3em;
+}
+
 #results {
-margin-left: 5em;
-display: none;
+	margin: auto;
+	display: none;
+	text-align: center;
+	font-size: 2em;
+}
+
+img {
+	border: 4px solid black;
 }

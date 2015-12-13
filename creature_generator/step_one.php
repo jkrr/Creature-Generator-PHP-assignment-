@@ -18,7 +18,7 @@
 
 <h4>Step One: Information Gathering</h4>
 
-<form method="post" action="step_two.php">
+<form id="creature_form" method="post" action="step_two.php">
 
 <p>
 	<label for="name">Name:</label>
@@ -48,7 +48,9 @@
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="js/jquery.uniform.min.js"></script>
 <script>
+$(document).ready(function(){
 jQuery("select, input:checkbox, input:radio, input:file, input:text, input:submit, textarea").uniform();
+});
 </script>
 </body>
 </html>
